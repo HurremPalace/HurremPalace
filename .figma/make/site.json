@@ -1,0 +1,11 @@
+{
+  "title": "Hurrem Palace",
+  "description": "This web application streamlines website design by providing users with tailored templates and tools, enhancing creativity and efficiency for designers.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}
