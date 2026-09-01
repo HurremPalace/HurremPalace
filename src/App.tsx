@@ -743,7 +743,7 @@ function HeroSection() {
       'TIMELINE: Construction 2027 | Opening 2032',
       '', 'INVESTMENT: ৳5,00,000 per share | 40,000 Authorized Shares',
       'Halal · Sharia-compliant · Land-backed',
-      '', '© 2025 Hurrem Palace Limited. All rights reserved.',
+      '', '© 2026 Hurrem Palace Limited. All rights reserved.',
     ].join('\n')
     const blob = new Blob([content], { type: 'application/pdf' })
     const url = URL.createObjectURL(blob)
