@@ -56,6 +56,8 @@ const MENU_SLIDES = [
   U('1723143036444-b76835788083'),
 ]
 
+const HURREM_LOGO = hurremLogo
+
 import heroVideoSrc from '@/imports/Exterior_01.mp4'
 const HERO_VIDEO = heroVideoSrc
 
@@ -339,6 +341,26 @@ function useReveal(threshold = 0.15) {
   return { ref, visible }
 }
 
+function useRevealOnce(threshold = 0.15) {
+  const ref = useRef<HTMLElement>(null)
+  const [visible, setVisible] = useState(false)
+  useEffect(() => {
+    const el = ref.current; if (!el || visible) return
+    const obs = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setVisible(true)
+          obs.disconnect()
+        }
+      },
+      { threshold }
+    )
+    obs.observe(el)
+    return () => obs.disconnect()
+  }, [threshold, visible])
+  return { ref, visible }
+}
+
 // Counts up from startVal to target when `enabled` turns true
 function useCountUp(target: number, duration = 1600, enabled = false, startVal = 0) {
   const [val, setVal] = useState(startVal)
@@ -510,7 +532,7 @@ function LoadingScreen({ onComplete }: { onComplete: () => void }) {
       transition: `opacity 0.8s ${EASE}`, opacity: fade ? 0 : 1, pointerEvents: fade ? 'none' : 'all',
     }}>
       <div style={{ width: 120, height: 120, borderRadius: '50%', overflow: 'hidden', border: '1px solid rgba(179,138,62,0.3)', animation: `sealIn 1.4s ${EASE} both`, flexShrink: 0 }}>
-        <img src={hurremLogo} alt="Hurrem Palace" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+        <img src={HURREM_LOGO} alt="Hurrem Palace" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
       </div>
       <div style={{ textAlign: 'center', animation: `fadeUp 1.2s 0.5s ${EASE} both`, opacity: 0 }}>
         <div style={{ fontFamily: CINZEL, fontSize: 20, letterSpacing: '0.35em', color: DC.champagne, fontWeight: 700, marginBottom: 10 }}>HURREM PALACE</div>
@@ -600,7 +622,7 @@ function Navigation({ onNavigate }: { onNavigate: (page: string | null) => void 
         <div style={{ position: 'absolute', left: '50%', transform: 'translateX(-50%)' }}>
           <button onClick={() => goTo(null)} style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}>
             <img
-              src={hurremLogo}
+              src={HURREM_LOGO}
               alt="Hurrem Palace"
               style={{ width: isMobile ? 40 : 66, height: 'auto', display: 'block' }}
             />
@@ -627,7 +649,7 @@ function Navigation({ onNavigate }: { onNavigate: (page: string | null) => void 
             <button onClick={() => setMenuOpen(false)} style={{ position: 'absolute', top: isMobile ? 20 : 28, right: isMobile ? 20 : 36, fontFamily: JOST, fontSize: 10, letterSpacing: '0.3em', color: C.sand, background: 'none', border: 'none', cursor: 'pointer' }}>CLOSE ✕</button>
             <div style={{ position: 'absolute', top: isMobile ? 20 : 28, left: isMobile ? 20 : 80 }}>
               <img
-                src={hurremLogo}
+                src={HURREM_LOGO}
                 alt="Hurrem Palace"
                 style={{ width: isMobile ? 30 : 45, height: 'auto', display: 'block' }}
               />
@@ -1430,7 +1452,7 @@ function Footer({ onNavigate }: { onNavigate: (page: string | null) => void }) {
     <footer style={{ backgroundColor: C.imperialBlack, borderTop: `1px solid ${C.brass}28` }}>
       <div style={{ maxWidth: 1320, margin: '0 auto', padding: isMobile ? '60px 24px 0' : '80px 80px 0' }}>
         <img
-          src={hurremLogo}
+          src={HURREM_LOGO}
           alt="Hurrem Palace"
           style={{ width: isMobile ? 168 : 240, height: 'auto', display: 'block', marginBottom: 12 }}
         />
@@ -1578,7 +1600,7 @@ function OurStoryPage({ onBack, onNavigate }: { onBack: () => void; onNavigate: 
   const w = useWindowWidth()
   const isMobile = w < 768
   const { ref: r1, visible: v1 } = useReveal(0.1)
-  const { ref: r2, visible: v2 } = useReveal(0.1)
+  const { ref: r2, visible: v2 } = useRevealOnce(0.1)
   const { ref: r3, visible: v3 } = useReveal(0.1)
   const { ref: r4, visible: v4 } = useReveal(0.1)
   const { ref: r5, visible: v5 } = useReveal(0.1)
