@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef, useCallback, createContext, useContext, type FC } from 'react'
+import chairmanPortrait from './imports/chairman.png'
 
 // ─── Images ──────────────────────────────────────────────────────────────────
 const U = (id: string, w = 1920, h = 1080) =>
@@ -33,7 +34,7 @@ const IMG = {
   fBeach:        U('1723143036444-b76835788083'),
   fPresidential: U('1731336478850-6bce7235e320'),
   ottoman1: U('1558618666-fcd25c85cd64', 1400, 900),
-  chairman: U('1507003211169-0a1dd7228f2d', 800, 1000),
+  chairman: chairmanPortrait,
   // Shareholder privilege images
   pVacation:    U('1571003123894-1eebc159e5d4', 1400, 900),
   pShuttle:     U('1544620347-c4be4d7dc628', 1400, 900),
@@ -55,8 +56,11 @@ const MENU_SLIDES = [
   U('1723143036444-b76835788083'),
 ]
 
-const HURREM_LOGO = '/imports/Hurrem_Logo_Final.png'
-const HERO_VIDEO = '/imports/Exterior_01.mp4'
+const ASSET_BASE = import.meta.env.BASE_URL
+const publicAsset = (path: string) => `${ASSET_BASE.replace(/\/$/, '/')}${path.replace(/^\//, '')}`
+
+const HURREM_LOGO = publicAsset('imports/Hurrem_Logo_Final.png')
+const HERO_VIDEO = publicAsset('imports/Exterior_01.mp4')
 
 // ─── Theme ───────────────────────────────────────────────────────────────────
 const DC = {
