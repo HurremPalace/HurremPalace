@@ -1,5 +1,4 @@
 import { useState, useEffect, useRef, useCallback, createContext, useContext, type FC } from 'react'
-import hurremLogo from '@/imports/Hurrem_Logo_Final.png'
 
 // ─── Images ──────────────────────────────────────────────────────────────────
 const U = (id: string, w = 1920, h = 1080) =>
@@ -56,10 +55,8 @@ const MENU_SLIDES = [
   U('1723143036444-b76835788083'),
 ]
 
-const HURREM_LOGO = hurremLogo
-
-import heroVideoSrc from '@/imports/Exterior_01.mp4'
-const HERO_VIDEO = heroVideoSrc
+const HURREM_LOGO = '/imports/Hurrem_Logo_Final.png'
+const HERO_VIDEO = '/imports/Exterior_01.mp4'
 
 // ─── Theme ───────────────────────────────────────────────────────────────────
 const DC = {
