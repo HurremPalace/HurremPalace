@@ -11,7 +11,9 @@ export default defineConfig(({ mode }) => {
   const emitSourcemaps = mode === 'development'
 
   return {
-    base: process.env.FIGMA_PUBLIC_URL ? `${process.env.FIGMA_PUBLIC_URL}/` : '/',
+    // FIGMA_PUBLIC_URL is set by Figma Make's preview CDN — never use it on Vercel
+    // (Vercel sets VERCEL=1 during every build and preview).
+    base: (process.env.FIGMA_PUBLIC_URL && !process.env.VERCEL) ? `${process.env.FIGMA_PUBLIC_URL}/` : '/',
     build: {
       sourcemap: emitSourcemaps ? 'inline' : false,
       minify: !emitSourcemaps,
