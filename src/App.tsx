@@ -1,7 +1,9 @@
 import { useState, useEffect, useRef, useCallback, createContext, useContext, type FC } from 'react'
-// Static assets served from /public — no ES module import needed, always works on Vercel
-const HURREM_LOGO     = '/Hurrem_Logo_Final.png'
-const CHAIRMAN_PHOTO  = '/Jahangir_Vai.png'
+import hurremLogoSrc from './imports/Hurrem_Logo_Final.png'
+import chairmanPhotoSrc from './imports/Jahangir_Vai.png'
+import heroVideoSrc from './imports/Exterior_01.mp4'
+const HURREM_LOGO    = hurremLogoSrc
+const CHAIRMAN_PHOTO = chairmanPhotoSrc
 
 // ─── Images ──────────────────────────────────────────────────────────────────
 const U = (id: string, w = 1920, h = 1080) =>
@@ -57,7 +59,7 @@ const MENU_SLIDES = [
   U('1723143036444-b76835788083'),
 ]
 
-const HERO_VIDEO = '/Exterior_01.mp4'
+const HERO_VIDEO = heroVideoSrc
 
 // ─── Theme ───────────────────────────────────────────────────────────────────
 const DC = {
