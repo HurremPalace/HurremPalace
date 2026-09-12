@@ -1,0 +1,118 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400;1,500&family=Jost:wght@300;400;500;600&display=swap');
+@import 'tailwindcss';
+
+/* ─── Dark theme (default) ──────────────────────────────────────────────────── */
+:root {
+  --c-bg:          #0A0807;
+  --c-bg-alt:      #11100E;
+  --c-crimson:     #5E0F1A;
+  --c-gold:        #B38A3E;
+  --c-champagne:   #D4B56A;
+  --c-ivory:       #E8E0D2;
+  --c-sand:        #A99D8B;
+  --c-brass:       #725C31;
+  --c-border:      rgba(114,92,49,0.22);
+
+  /* raw RGB for use in rgba() */
+  --rgb-bg:        10,8,7;
+  --rgb-bg-alt:    17,16,14;
+  --rgb-crimson:   94,15,26;
+  --rgb-gold:      179,138,62;
+  --rgb-brass:     114,92,49;
+}
+
+/* ─── Light theme ──────────────────────────────────────────────────────────── */
+[data-theme="light"] {
+  --c-bg:          #F4EDDF;
+  --c-bg-alt:      #EBE2D0;
+  --c-crimson:     #8B1020;
+  --c-gold:        #7A5210;
+  --c-champagne:   #5C3A0D;
+  --c-ivory:       #1C1510;
+  --c-sand:        #5A4830;
+  --c-brass:       #8B6D40;
+  --c-border:      rgba(122,82,16,0.25);
+
+  --rgb-bg:        244,237,223;
+  --rgb-bg-alt:    235,226,208;
+  --rgb-crimson:   139,16,32;
+  --rgb-gold:      122,82,16;
+  --rgb-brass:     139,109,64;
+}
+
+html, body {
+  background-color: var(--c-bg);
+  margin: 0;
+  /* Improves text rendering on all platforms */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+html {
+  overflow-x: clip;
+  scroll-behavior: smooth;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* GPU-accelerate only elements that actually move */
+video {
+  transform: translateZ(0);
+}
+
+/* Defer off-screen section paint cost */
+section {
+  content-visibility: auto;
+  contain-intrinsic-size: 0 600px;
+}
+
+/* Hero section must always paint immediately */
+section#home,
+section[data-eager] {
+  content-visibility: visible;
+  contain-intrinsic-size: none;
+}
+
+/* Prevent layout shift from images before they load */
+img {
+  display: block;
+}
+
+/* Smooth tap highlight removal on mobile */
+button, a {
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+/* Use the coast hero image as poster while video loads */
+video[poster] {
+  background-size: cover;
+  background-position: center;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: rgba(169, 157, 139, 0.3);
+}
+
+::-webkit-scrollbar {
+  width: 3px;
+}
+::-webkit-scrollbar-track {
+  background: #0A0807;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(179, 138, 62, 0.25);
+  border-radius: 2px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(212, 181, 106, 0.4);
+}
+
+select option {
+  background-color: #11100E;
+  color: #E8E0D2;
+}
